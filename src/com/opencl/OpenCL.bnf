@@ -1,0 +1,20 @@
+{
+    parserClass="com.opencl.parser.OpenCL"
+
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="OpenCL"
+    psiImplClassSuffix="Impl"
+    psiPackage="com.opencl.psi"
+    psiImplPackage="com.opencl.psi.impl"
+
+    elementTypeHolderClass="com.opencl.psi.OpenCLTypes"
+    elementTypeClass="com.opencl.psi.OpenCLElementType"
+    tokenTypeClass="com.opencl.psi.OpenCLTokenType"
+}
+
+OpenCLFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY
