@@ -1,5 +1,5 @@
 {
-    parserClass="com.opencl.parser.OpenCL"
+    parserClass="com.opencl.parser.OpenCLParser"
 
     extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 

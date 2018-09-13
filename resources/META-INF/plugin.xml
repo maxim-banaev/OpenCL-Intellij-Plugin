@@ -24,6 +24,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <fileTypeFactory implementation="com.opencl.OpenCLFileTypeFactory"/>
+    <lang.parserDefinition language="OpenCL" implementationClass="com.opencl.OpenCLParserDefinition"/>
   </extensions>
 
   <actions>
