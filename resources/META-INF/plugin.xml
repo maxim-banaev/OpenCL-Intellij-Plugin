@@ -1,34 +1,38 @@
 <idea-plugin>
-  <id>com.opencl</id>
-  <name>OpenCL Support</name>
-  <version>0.1</version>
-  <vendor email="Maxim.Banaev@jetbrains.com" url="https://github.com/maxim-banaev/OpenCL-Intellij-Plugin">JetBrains</vendor>
+    <id>com.opencl</id>
+    <name>OpenCL Support</name>
+    <version>0.1</version>
+    <vendor email="Maxim.Banaev@jetbrains.com" url="https://github.com/maxim-banaev/OpenCL-Intellij-Plugin">JetBrains
+    </vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
      OpenCL Syntax higlighting support.
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Support OpenCL syntax for *.cl file </em>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="182.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="182.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <fileTypeFactory implementation="com.opencl.OpenCLFileTypeFactory"/>
-    <lang.parserDefinition language="OpenCL" implementationClass="com.opencl.OpenCLParserDefinition"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="com.opencl.OpenCLFileTypeFactory"/>
+        <lang.parserDefinition language="OpenCL" implementationClass="com.opencl.OpenCLParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="OpenCL"
+                                       implementationClass="com.opencl.OpenCLSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="com.opencl.OpenCLColorSettingsPage"/>
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 
 </idea-plugin>
