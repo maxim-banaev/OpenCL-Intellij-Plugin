@@ -27,18 +27,41 @@ KEY_CHARACTER=[^:=\ \n\t\f\\] | "\\ "
 
 %%
 
-<YYINITIAL> {END_OF_LINE_COMMENT}                           { yybegin(YYINITIAL); return OpenCLTypes.COMMENT; }
+<YYINITIAL> {END_OF_LINE_COMMENT} {
+          yybegin(YYINITIAL);
+          return OpenCLTypes.COMMENT;
+      }
 
-<YYINITIAL> {KEY_CHARACTER}+                                { yybegin(YYINITIAL); return OpenCLTypes.KEY; }
+<YYINITIAL> {KEY_CHARACTER}+ {
+          yybegin(YYINITIAL);
+          return OpenCLTypes.KEY;
+      }
 
-<YYINITIAL> {SEPARATOR}                                     { yybegin(WAITING_VALUE); return OpenCLTypes.SEPARATOR; }
+<YYINITIAL> {SEPARATOR} {
+          yybegin(WAITING_VALUE);
+          return OpenCLTypes.SEPARATOR;
+      }
 
-<WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+               { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+<WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+ {
+          yybegin(YYINITIAL);
+          return TokenType.WHITE_SPACE;
+      }
 
-<WAITING_VALUE> {WHITE_SPACE}+                              { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE; }
+<WAITING_VALUE> {WHITE_SPACE}+ {
+          yybegin(WAITING_VALUE);
+          return TokenType.WHITE_SPACE;
+      }
 
-<WAITING_VALUE> {FIRST_VALUE_CHARACTER}{VALUE_CHARACTER}*   { yybegin(YYINITIAL); return OpenCLTypes.VALUE; }
+<WAITING_VALUE> {FIRST_VALUE_CHARACTER}{VALUE_CHARACTER}* {
+          yybegin(YYINITIAL);
+          return OpenCLTypes.VALUE;
+      }
 
-({CRLF}|{WHITE_SPACE})+                                     { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+({CRLF}|{WHITE_SPACE})+ {
+          yybegin(YYINITIAL);
+          return TokenType.WHITE_SPACE;
+      }
 
-[^]                                                         { return TokenType.BAD_CHARACTER; }
+[^] {
+          return TokenType.BAD_CHARACTER;
+      }
